@@ -36,9 +36,10 @@ public class MainActivity extends AppCompatActivity {
 
         try{
 
+            // değerleri çekeceğimiz url
             String url = "http://data.fixer.io/api/latest?access_key=7bfc13a3771f6828fa015c76be8fa59d&format=1";
 
-            downloadData.execute(url);
+            downloadData.execute(url); // url deki verileri getir.
 
         }catch (Exception e){
 
@@ -46,10 +47,18 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // AsyncTask :
+    /* AsyncTask : Kullanıcı arayüzünde işlemler yapılabilir. Bu sınıfla gelen metodlar ile arka
+    planda yapılan bir işlemin sonuçları UI thread ile arayüzde gösterilir.
+    Özellikle kısa süren işlemleri yapmak için kullanılır.
+    */
 
     public class DownloadData extends AsyncTask<String,Void,String>{
 
+        /*
+        doInBackground : Kullanıcı arayüzünü etkilemeden arkaplan da yapılmak istenen işlemler burada
+        yapılır. Burada yapılan işlemler bittikten sonra arayüze bir mesaj vs göndermek istenirse, mesajı
+        bu metotda bulunan return koduyla birlikte onPostExecute metoduna gönderebilirsiniz.
+         */
 
         @Override
         protected String doInBackground(String... strings) {
@@ -89,6 +98,12 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+
+        /*
+        onPostExecute : doInBackground() metodu bittikten sonra uygulamanın ana iş
+        parçasına bir mesaj göndermek istediğinizde gelen mesaj bu metot ile alınır.
+        Uygulamanın ana akışını etkiler hataya kesinlikle sebep olmaz.
+         */
 
         @Override
         protected void onPostExecute(String s) {
