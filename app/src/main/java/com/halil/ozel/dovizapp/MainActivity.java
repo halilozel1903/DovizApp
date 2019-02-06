@@ -69,11 +69,21 @@ public class MainActivity extends AppCompatActivity {
 
             try{
 
+                /*
+                 Java da tüm input/output işlemleri stream üzerinden yapılır .
+                 Stream ; sıralı olarak işlemler yapılan veri dizisidir .
+                 Stream çok farklı veri kaynaklarından veri alışverişi yapabilir ; disk , veritabanı , console vb.
+                 */
+
                 url = new URL(strings[0]) ; // strings dizinin 0.index'teki değerini al ve url'e ata.
                 httpURLConnection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = httpURLConnection.getInputStream();
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
 
+                // Input Stream : Java programı dış kaynaktan(veri tabanı ,disk) veri okurken  kullanır
+
+
+                // Output Stream : Java  programından dış kaynağa (veri tabanı , disk) veri gönderilirken kullanılır
 
                 int data = inputStreamReader.read();
 
