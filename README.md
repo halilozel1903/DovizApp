@@ -1,5 +1,4 @@
-# Döviz App
+# Currency App
 
-Döviz değerlerinin çekildiği bir uygulamadır.
-
+It is an application where foreign currency values are withdrawn.
 
