@@ -2,7 +2,7 @@ package com.halil.ozel.dovizapp;
 
 import android.annotation.SuppressLint;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -42,8 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
             downloadData.execute(url); // url deki verileri getir.
 
-        } catch (Exception e) {
-
+        } catch (Exception ignored) {
 
         }
     }
