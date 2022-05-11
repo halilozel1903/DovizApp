@@ -1,5 +1,6 @@
 package com.halil.ozel.dovizapp;
 
+import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,14 +35,14 @@ public class MainActivity extends AppCompatActivity {
 
         DownloadData downloadData = new DownloadData();
 
-        try{
+        try {
 
             // değerleri çekeceğimiz url
             String url = "http://data.fixer.io/api/latest?access_key=7bfc13a3771f6828fa015c76be8fa59d&format=1";
 
             downloadData.execute(url); // url deki verileri getir.
 
-        }catch (Exception e){
+        } catch (Exception e) {
 
 
         }
@@ -52,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
     Özellikle kısa süren işlemleri yapmak için kullanılır.
     */
 
-    public class DownloadData extends AsyncTask<String,Void,String>{
+    @SuppressLint("StaticFieldLeak")
+    public class DownloadData extends AsyncTask<String, Void, String> {
 
         /*
         doInBackground : Kullanıcı arayüzünü etkilemeden arkaplan da yapılmak istenen işlemler burada
@@ -63,11 +65,11 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... strings) {
 
-            String result = ""; // download edilen değerleri koyma işlemi
+            StringBuilder result = new StringBuilder(); // download edilen değerleri koyma işlemi
             URL url;
             HttpURLConnection httpURLConnection;
 
-            try{
+            try {
 
                 /*
                  Java da tüm input/output işlemleri stream üzerinden yapılır .
@@ -75,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                  Stream çok farklı veri kaynaklarından veri alışverişi yapabilir ; disk , veritabanı , console vb.
                  */
 
-                url = new URL(strings[0]) ; // strings dizinin 0.index'teki değerini al ve url'e ata.
+                url = new URL(strings[0]); // strings dizinin 0.index'teki değerini al ve url'e ata.
                 httpURLConnection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = httpURLConnection.getInputStream();
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
@@ -87,19 +89,19 @@ public class MainActivity extends AppCompatActivity {
 
                 int data = inputStreamReader.read();
 
-                while (data>0){
+                while (data > 0) {
 
                     char character = (char) data;
-                    result += character; // dataları result'a kaydettik.
+                    result.append(character); // dataları result'a kaydettik.
 
                     data = inputStreamReader.read();
 
 
                 }
 
-                return result; // hata yoksa değeri döndür.
+                return result.toString(); // hata yoksa değeri döndür.
 
-            }catch (Exception e){
+            } catch (Exception e) {
 
                 return null; // hata varsa hiçbir şey döndürme
 
@@ -115,20 +117,17 @@ public class MainActivity extends AppCompatActivity {
         Uygulamanın ana akışını etkiler hataya kesinlikle sebep olmaz.
          */
 
+        @SuppressLint("SetTextI18n")
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
 
-           // System.out.println("Alınan data : "+s);
+            // System.out.println("Alınan data : "+s);
 
             try {
 
                 JSONObject jsonObject = new JSONObject(s);
-                //String base = jsonObject.getString("base");
-                //String date = jsonObject.getString("date");
                 String rates = jsonObject.getString("rates");
-                //System.out.println(base);
-                //System.out.println(date);
 
 
                 JSONObject jsonObject1 = new JSONObject(rates);
@@ -139,15 +138,14 @@ public class MainActivity extends AppCompatActivity {
                 String GBP = jsonObject1.getString("GBP");
 
 
-                tryTextView.setText("TRY : "+TRY);
-                usdTextView.setText("USD : "+USD);
-                cadTextView.setText("CAD : "+CAD);
-                kwdTextView.setText("KWD : "+KWD);
-                gbpTextView.setText("GBP : "+GBP);
+                tryTextView.setText("TRY : " + TRY);
+                usdTextView.setText("USD : " + USD);
+                cadTextView.setText("CAD : " + CAD);
+                kwdTextView.setText("KWD : " + KWD);
+                gbpTextView.setText("GBP : " + GBP);
 
 
-
-            }catch (Exception e){
+            } catch (Exception ignored) {
 
             }
 
