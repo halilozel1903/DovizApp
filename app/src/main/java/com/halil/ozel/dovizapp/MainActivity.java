@@ -2,7 +2,9 @@ package com.halil.ozel.dovizapp;
 
 import android.annotation.SuppressLint;
 import android.os.AsyncTask;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -131,14 +133,14 @@ public class MainActivity extends AppCompatActivity {
 
                 JSONObject jsonObject1 = new JSONObject(rates);
                 String TRY = jsonObject1.getString("TRY");
-                String USD = jsonObject1.getString("USD");
+                String USD = jsonObject1.getString("EUR");
                 String CAD = jsonObject1.getString("CAD");
                 String KWD = jsonObject1.getString("KWD");
                 String GBP = jsonObject1.getString("GBP");
 
 
                 tryTextView.setText("TRY : " + TRY);
-                usdTextView.setText("USD : " + USD);
+                usdTextView.setText("EUR : " + USD);
                 cadTextView.setText("CAD : " + CAD);
                 kwdTextView.setText("KWD : " + KWD);
                 gbpTextView.setText("GBP : " + GBP);
