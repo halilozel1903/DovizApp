@@ -1,6 +1,6 @@
 # Currency 💸 App 📱
 
-It's an application where foreign currency values are withdrawn. The rate of instant currencies is shown.💵 💶 💷 💴
+It's an application where foreign currency values are withdrawn. The rate of instant currencies is shown. (Dollar, Euro, Pound)💵 💶 💷 💴
 
 ## Screenshots 📸
 
