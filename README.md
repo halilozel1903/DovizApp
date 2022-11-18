@@ -1,8 +1,8 @@
 # Currency 💸 App 📱
 
-It's an application where foreign currency values are withdrawn. The rate of instant currencies is shown. (Dollar, Euro, Pound)💵 💶 💷 💴
+It's an application where foreign currency values are withdrawn. The rate of instant currencies is shown. (Dollar, Euro, Pound etc.) 💵 💶 💷 💴
 
-## Screenshots 📸
+## App Screenshots 📸
 
 <img src="https://github.com/halilozel1903/DovizApp/blob/master/app/src/main/res/drawable/screen_1.png" width="200"/>  <img src="https://github.com/halilozel1903/DovizApp/blob/master/app/src/main/res/drawable/screen_2.png" width="200"/> 
 
