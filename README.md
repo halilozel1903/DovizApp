@@ -2,6 +2,12 @@
 
 It's an application where foreign currency values are withdrawn. The rate of instant currencies is shown. (Dollar, Euro, Pound etc.) 💵 💶 💷 💴
 
+## Build requirements
+
+- JDK 17 or newer (verified with JDK 21)
+- Android Studio Rabbit 1 (2026.2.1) or newer
+- Android SDK Platform 37.2 and Android SDK Build-Tools 36.0.0 or newer
+
 ## App Screenshots 📸
 
 <img src="https://github.com/halilozel1903/DovizApp/blob/master/app/src/main/res/drawable/screen_1.png" width="200"/>  <img src="https://github.com/halilozel1903/DovizApp/blob/master/app/src/main/res/drawable/screen_2.png" width="200"/> 
