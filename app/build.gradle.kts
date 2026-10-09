@@ -5,9 +5,7 @@ plugins {
 android {
     namespace = "com.halil.ozel.dovizapp"
     compileSdk {
-        version = release(37) {
-            minorApiLevel = 2
-        }
+        version = release(37)
     }
 
     defaultConfig {
