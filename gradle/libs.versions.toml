@@ -1,5 +1,5 @@
 [versions]
-agp = "7.2.1"
+agp = "9.4.1"
 appcompat = "1.4.2"
 constraintlayout = "2.1.4"
 

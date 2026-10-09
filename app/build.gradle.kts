@@ -3,12 +3,21 @@ plugins {
 }
 
 android {
-    compileSdk = 32
+    namespace = "com.halil.ozel.dovizapp"
+    compileSdk {
+        version = release(37) {
+            minorApiLevel = 2
+        }
+    }
 
     defaultConfig {
         applicationId = "com.halil.ozel.dovizapp"
-        minSdk = 24
-        targetSdk = 32
+        minSdk {
+            version = release(24)
+        }
+        targetSdk {
+            version = release(37)
+        }
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -22,6 +31,11 @@ android {
                 "proguard-rules.pro"
             )
         }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }
 
