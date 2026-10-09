@@ -1,7 +1,7 @@
 [versions]
 agp = "9.4.1"
-appcompat = "1.4.2"
-constraintlayout = "2.1.4"
+appcompat = "1.8.0"
+constraintlayout = "2.2.2"
 
 [libraries]
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
