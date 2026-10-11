@@ -39,72 +39,69 @@ public class MainActivity extends AppCompatActivity {
 
         try {
 
-            // değerleri çekeceğimiz url
+            // URL the exchange rates are loaded from.
             String url = "http://data.fixer.io/api/latest?access_key=7bfc13a3771f6828fa015c76be8fa59d&format=1";
 
-            downloadData.execute(url); // url deki verileri getir.
+            downloadData.execute(url); // Fetch the data at this URL.
 
         } catch (Exception ignored) {
 
         }
     }
 
-    /* AsyncTask : Kullanıcı arayüzünde işlemler yapılabilir. Bu sınıfla gelen metodlar ile arka
-    planda yapılan bir işlemin sonuçları UI thread ile arayüzde gösterilir.
-    Özellikle kısa süren işlemleri yapmak için kullanılır.
+    /* AsyncTask can update the UI. Its callbacks publish the result of background
+    work on the UI thread. It is intended for short operations.
     */
 
     @SuppressLint("StaticFieldLeak")
     public class DownloadData extends AsyncTask<String, Void, String> {
 
         /*
-        doInBackground : Kullanıcı arayüzünü etkilemeden arkaplan da yapılmak istenen işlemler burada
-        yapılır. Burada yapılan işlemler bittikten sonra arayüze bir mesaj vs göndermek istenirse, mesajı
-        bu metotda bulunan return koduyla birlikte onPostExecute metoduna gönderebilirsiniz.
+        doInBackground runs work that must not block the UI.
+        Return a value here to pass it to onPostExecute.
          */
 
         @Override
         protected String doInBackground(String... strings) {
 
-            StringBuilder result = new StringBuilder(); // download edilen değerleri koyma işlemi
+            StringBuilder result = new StringBuilder(); // Holds the downloaded text.
             URL url;
             HttpURLConnection httpURLConnection;
 
             try {
 
                 /*
-                 Java da tüm input/output işlemleri stream üzerinden yapılır .
-                 Stream ; sıralı olarak işlemler yapılan veri dizisidir .
-                 Stream çok farklı veri kaynaklarından veri alışverişi yapabilir ; disk , veritabanı , console vb.
+                 Java I/O uses streams. A stream is a sequence of data.
+                 Streams can read from many sources, such as disk, a database, or the console.
                  */
 
-                url = new URL(strings[0]); // strings dizinin 0.index'teki değerini al ve url'e ata.
+                url = new URL(strings[0]); // Use the first URL argument.
                 httpURLConnection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = httpURLConnection.getInputStream();
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
 
-                // Input Stream : Java programı dış kaynaktan(veri tabanı ,disk) veri okurken  kullanır
+                // InputStream: the program reads data from an external source.
 
 
-                // Output Stream : Java  programından dış kaynağa (veri tabanı , disk) veri gönderilirken kullanılır
+                // OutputStream: the program writes data to an external source.
 
                 int data = inputStreamReader.read();
 
                 while (data > 0) {
 
                     char character = (char) data;
-                    result.append(character); // dataları result'a kaydettik.
+                    result.append(character); // Append each character to the result.
 
                     data = inputStreamReader.read();
 
 
                 }
 
-                return result.toString(); // hata yoksa değeri döndür.
+                return result.toString(); // Return the text when the read succeeds.
 
             } catch (Exception e) {
 
-                return null; // hata varsa hiçbir şey döndürme
+                return null; // Return nothing when the read fails.
 
             }
 
@@ -113,9 +110,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         /*
-        onPostExecute : doInBackground() metodu bittikten sonra uygulamanın ana iş
-        parçasına bir mesaj göndermek istediğinizde gelen mesaj bu metot ile alınır.
-        Uygulamanın ana akışını etkiler hataya kesinlikle sebep olmaz.
+        onPostExecute receives the value returned by doInBackground on the main thread.
+        It can update the UI.
          */
 
         @SuppressLint("SetTextI18n")
@@ -123,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
 
-            // System.out.println("Alınan data : "+s);
+            // System.out.println("Received data: " + s);
 
             try {
 
