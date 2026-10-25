@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">DovizApp</string>
+    <string name="rate_cad_idle">CAD : </string>
+    <string name="rate_gbp_idle">GBP : </string>
+    <string name="rate_eur_idle">EUR : </string>
+    <string name="rate_kwd_idle">KWD : </string>
+    <string name="rate_try_idle">TRY : </string>
+    <string name="rate_cad">CAD : %1$s</string>
+    <string name="rate_gbp">GBP : %1$s</string>
+    <string name="rate_eur">EUR : %1$s</string>
+    <string name="rate_kwd">KWD : %1$s</string>
+    <string name="rate_try">TRY : %1$s</string>
+    <string name="show_rates">Kurları göster</string>
 </resources>
