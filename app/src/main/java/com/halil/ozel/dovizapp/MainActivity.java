@@ -18,7 +18,7 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView tryTextView, cadTextView, usdTextView, gbpTextView, kwdTextView;
+    TextView tryTextView, cadTextView, eurTextView, gbpTextView, kwdTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         tryTextView = findViewById(R.id.tryTxt);
         cadTextView = findViewById(R.id.cadTxt);
-        usdTextView = findViewById(R.id.usdTxt);
+        eurTextView = findViewById(R.id.eurTxt);
         gbpTextView = findViewById(R.id.gbpTxt);
         kwdTextView = findViewById(R.id.kwdTxt);
     }
@@ -114,7 +114,6 @@ public class MainActivity extends AppCompatActivity {
         It can update the UI.
          */
 
-        @SuppressLint("SetTextI18n")
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
@@ -129,17 +128,17 @@ public class MainActivity extends AppCompatActivity {
 
                 JSONObject jsonObject1 = new JSONObject(rates);
                 String TRY = jsonObject1.getString("TRY");
-                String USD = jsonObject1.getString("EUR");
+                String eur = jsonObject1.getString("EUR");
                 String CAD = jsonObject1.getString("CAD");
                 String KWD = jsonObject1.getString("KWD");
                 String GBP = jsonObject1.getString("GBP");
 
 
-                tryTextView.setText("TRY : " + TRY);
-                usdTextView.setText("EUR : " + USD);
-                cadTextView.setText("CAD : " + CAD);
-                kwdTextView.setText("KWD : " + KWD);
-                gbpTextView.setText("GBP : " + GBP);
+                tryTextView.setText(getString(R.string.rate_try, TRY));
+                eurTextView.setText(getString(R.string.rate_eur, eur));
+                cadTextView.setText(getString(R.string.rate_cad, CAD));
+                kwdTextView.setText(getString(R.string.rate_kwd, KWD));
+                gbpTextView.setText(getString(R.string.rate_gbp, GBP));
 
 
             } catch (Exception ignored) {
